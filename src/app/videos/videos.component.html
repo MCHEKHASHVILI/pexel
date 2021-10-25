@@ -1,0 +1,25 @@
+<div>
+    <app-search (changed)="filterVideos($event)"></app-search>
+    <!-- Videos Container -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-8 gap-4 justify-items-center">
+        <div *ngFor="let video of filteredVideos" class="justify-self-center">
+            <div class="flex flex-col space-y-2">
+                <!-- Display Video Hero -->
+                <a href="{{video.url}}" target="_blank">
+                    <img class="object-contain h-full w-full" src="{{video.image}}">
+                </a>
+                <div class="flex flex-row space-x-2 items-center">
+                    <!-- User Image -->
+                    <div class="w-1/4">
+                        <img class="object-contain rounded-full" src="{{getAvatar(video.user.name)}}">
+                    </div>
+                    <!-- Duration -->
+                    <div class="flex flex-col overflow-hidden">
+                        <span class="text-xs font-black justify-self-end">By: {{ video.user.name }}</span>
+                        <span class="text-xs font-semibold justify-self-end">Duration {{video.duration}} Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
